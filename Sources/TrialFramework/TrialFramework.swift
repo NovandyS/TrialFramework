@@ -21,7 +21,30 @@ public struct MainTextField: View {
         .padding()
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.blue, lineWidth: 2)
+                .stroke(.blue, lineWidth: 1)
         )
+    }
+}
+
+public struct MbbButton: View {
+    
+    @State var btnLabel: String
+    
+    public init(action: @escaping () -> Void, btnLabel: String) {
+        self.btnLabel = btnLabel
+    }
+    
+    public var body: some View {
+        Button(action: {}) {
+            Text(btnLabel)
+                .font(.system(size: 20))
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity)
+                .padding()
+        }
+        .foregroundColor(.white)
+        .background(Color.blue)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        
     }
 }
