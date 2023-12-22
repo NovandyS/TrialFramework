@@ -1,29 +1,27 @@
 import SwiftUI
 
-public struct TrialFramework {
-    public struct MainTextField: View {
+public struct MainTextField: View {
+
+    @State var placeholder: String
+    @Binding var text: String
     
-        @State var placeholder: String
-        @Binding var text: String
-        
-        public init(placeholder: String, text: Binding<String>) {
-            self._placeholder = State(initialValue: placeholder)
-            self._text = text
+    public init(placeholder: String, text: Binding<String>) {
+        self._placeholder = State(initialValue: placeholder)
+        self._text = text
+    }
+    
+    public var body: some View {
+        HStack {
+            Image(systemName: "person")
+                .foregroundColor(.blue)
+            TextField(placeholder, text: $text)
+                .font(.system(size: 20, weight: .bold, design: .default))
+                .foregroundColor(.blue)
         }
-        
-        public var body: some View {
-            HStack {
-                Image(systemName: "person")
-                    .foregroundColor(.blue)
-                TextField(placeholder, text: $text)
-                    .font(.system(size: 20, weight: .bold, design: .default))
-                    .foregroundColor(.blue)
-            }
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.blue, lineWidth: 2)
-            )
-        }
+        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.blue, lineWidth: 2)
+        )
     }
 }
